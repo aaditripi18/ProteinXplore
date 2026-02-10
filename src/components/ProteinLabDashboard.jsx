@@ -42,7 +42,6 @@ function ProteinLabDashboard() {
     setHighlightedRegions([region]);
   };
 
-  // 🧠 AI CONTEXT (RESTORED)
   const aiContext = {
     gene: proteinData?.metadata?.geneSymbol,
     description: proteinData?.metadata?.description,
@@ -55,21 +54,32 @@ function ProteinLabDashboard() {
   return (
     <>
       <Helmet>
-        <title>ProteinLab Dashboard - Advanced Protein Structure Analysis</title>
+        <title>ProteinXplore Dashboard</title>
         <meta
           name="description"
-          content="Interactive 3D protein structure visualization and mutation analysis platform for rare disease research."
+          content="Interactive protein structure visualization and mutation analysis platform."
         />
       </Helmet>
 
       <div className="min-h-screen bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900">
         
-        {/* 🔥 HEADER (ProteinLab title REMOVED here) */}
+        {/* HEADER */}
         <header className="border-b border-white/10 bg-black/20 backdrop-blur-md">
           <div className="max-w-[1800px] mx-auto px-6 py-4">
-            <div className="flex items-center justify-end mb-4">
+            <div className="flex items-center justify-between mb-4">
+
+              {/* BRAND (LEFT, EMPHASIZED X) */}
+              <div className="flex items-center gap-2 -ml-1">
+                <Dna className="h-6 w-6 text-blue-300" />
+                <h1 className="text-2xl font-bold text-white tracking-wide">
+                  Protein
+                  <span className="text-3xl font-extrabold text-blue-300">X</span>
+                  plore
+                </h1>
+              </div>
+
               {proteinData && (
-                <div className="flex items-center gap-4 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-lg border border-white/20">
+                <div className="flex items-center gap-4 bg-white/10 px-4 py-2 rounded-lg border border-white/20">
                   <div className="text-right">
                     <div className="text-sm text-gray-300">Currently Viewing</div>
                     <div className="text-lg font-bold text-white">
@@ -92,7 +102,7 @@ function ProteinLabDashboard() {
         <main className="max-w-[1800px] mx-auto px-6 py-6">
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
 
-            {/* LEFT PANEL */}
+            {/* LEFT */}
             <div className="lg:col-span-3 space-y-6">
               <div className="h-[600px] rounded-xl overflow-hidden shadow-2xl">
                 <ProteinViewer3D
@@ -107,9 +117,9 @@ function ProteinLabDashboard() {
               </div>
             </div>
 
-            {/* RIGHT PANEL */}
+            {/* RIGHT */}
             <div className="lg:col-span-2">
-              <div className="bg-white/10 backdrop-blur-md rounded-xl border border-white/20 shadow-2xl">
+              <div className="bg-white/10 rounded-xl border border-white/20 shadow-2xl">
                 <Tabs value={activeTab} onValueChange={setActiveTab}>
                   <TabsList className="w-full grid grid-cols-4 bg-black/40 border-b border-white/10">
                     <TabsTrigger value="mutations">
@@ -149,7 +159,6 @@ function ProteinLabDashboard() {
                       />
                     </TabsContent>
 
-                    {/* 🧠 AI ASSISTANT (RESTORED & WORKING) */}
                     <TabsContent value="research" className="space-y-4">
                       <ResearchContext proteinData={proteinData} />
                       <ProteinAIAgent
